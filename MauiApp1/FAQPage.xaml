@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp1.FAQPage"
+             Title="FAQ">
+
+    <ScrollView>
+        <StackLayout 
+            Padding="10">
+            <Label 
+                Text="Frequently Asked Questions" 
+                FontSize="Large" 
+                FontAttributes="Bold" 
+                Margin="0,0,0,20"/>
+
+            <Label 
+                Text="Q: What is this app about?" 
+                FontSize="18" 
+                FontAttributes="Bold"/>
+            <Label 
+                Text="A: This app helps you manage your tasks and stay organized." 
+                Margin="0,0,0,20"/>
+
+            <Label 
+                Text="Q: How do I create a new task?" 
+                FontSize="18"  
+                FontAttributes="Bold"/>
+            <Label 
+                Text="A: To create a new task, first navigate back to the overview and click on 'See all Tasks.' Once you are on the 'See all Tasks' page, you can click on the 'New Task' button and provide the necessary details."
+                Margin="0,0,0,20"/>
+
+            <Label 
+                Text="Q: Can I set reminders for my tasks?" 
+                FontSize="18" 
+                FontAttributes="Bold"/>
+            <Label 
+                Text="A: Yes, you can set reminders when creating or editing a task to receive notifications." 
+                Margin="0,0,0,20"/>
+
+            <Label 
+                Text="Q: Is my data secure?" 
+                FontSize="18" 
+                FontAttributes="Bold"/>
+            <Label 
+                Text="A: Your data is stored securely, and we prioritize the privacy and security of your information." 
+                Margin="0,0,0,20"/>
+
+            <Button 
+                Text="Back to Overview"
+                Clicked="OnBackToOverviewClicked"
+                HorizontalOptions="Center"
+                VerticalOptions="End"/>
+        </StackLayout>
+    </ScrollView>
+
+</ContentPage>

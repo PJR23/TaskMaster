@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp1.NewPage3"
+             Title="NewPage3">
+
+    <ScrollView>
+        <VerticalStackLayout Spacing="15" Padding="20">
+
+            <Button
+                Text="New Task"
+                Clicked="Clicked1"
+                HorizontalOptions="Center"
+                MinimumWidthRequest="50"/>
+            <Button
+                Text="Back to overview"
+                Clicked="Clicked2"
+                HorizontalOptions="Center"
+                MinimumWidthRequest="50"/>
+            <Label 
+                Text="Welcome to .NET MAUI!"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center" />
+
+            <Label x:Name="userIdLabel"
+                Text="User ID: "
+                VerticalOptions="Center" 
+                HorizontalOptions="Center" />
+
+            <!-- Hier werden die Aufgaben angezeigt -->
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

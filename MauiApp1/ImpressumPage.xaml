@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp1.ImpressumPage"
+             Title="Impressum">
+
+    <ScrollView>
+        <StackLayout Padding="10">
+            <Label 
+                Text="Impressum:" 
+                FontSize="25" 
+                FontAttributes="Bold" 
+                Margin="0,0,0,20"/>
+
+            <Label 
+                Text="Company details:" 
+                FontSize="20" 
+                FontAttributes="Bold"/>
+
+            <Label 
+                Text="Company Name: gibb DEPARTMENT IET" 
+                Margin="0,10,0,5"/>
+            <Label 
+                Text="Lorrainestrasse 5B · 3013 Bern" 
+                Margin="0,0,0,5"/>
+
+            <Label 
+                Text="Personal details:" 
+                FontSize="20" FontAttributes="Bold" 
+                Margin="0,10,0,0"/>
+            
+            <Label 
+                Text="Name: Paul Rehbein"
+                Margin="0,10,0,5"/>
+            <Label 
+                Text="Adress: Mühlebachweg 7, 3053 Münchenbuchsee" 
+                Margin="0,0,0,5"/>
+            <Label 
+                Text="Phone: 079 274 45 06" 
+                Margin="0,0,0,5"/>
+            <Label 
+                Text="Email: pre142604@stud.gibb.ch" 
+                Margin="0,0,0,5"/>
+
+            <Button Text="Back to Overview"
+                Clicked="OnBackToOverviewClicked"
+                HorizontalOptions="Center"
+                VerticalOptions="End"/>
+        </StackLayout>
+    </ScrollView>
+
+</ContentPage>

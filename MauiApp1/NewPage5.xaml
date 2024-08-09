@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp1.NewPage5"
+             Title="NewPage5">
+    <ScrollView>
+        <VerticalStackLayout Padding="20">
+            <Label Text="Title:"/>
+            <Entry x:Name="titleEntry"
+                   Placeholder="Enter title (max 50 characters)"
+                   MaxLength="50"
+                   TextChanged="OnTitleEntryTextChanged"/>
+
+            <Label Text="To be done by:"/>
+            <DatePicker 
+                    x:Name="datePicker"
+                    Format="dd/MM/yyyy"
+                    DateSelected="OnDateSelected"/>
+            <TimePicker 
+                    x:Name="timePicker"
+                    Format="HH:mm"/>
+
+            <Label Text="Description"/>
+            <Editor x:Name="entry" 
+                    Placeholder="Enter text (max 600 characters)" 
+                    MaximumWidthRequest="500"
+                    MinimumWidthRequest="500"
+                    HeightRequest="150"
+                    TextChanged="OnEditorTextChanged"
+                    HorizontalOptions="Start"/>
+
+            <Label Text="Notifications:"/>
+            <Switch x:Name="switcher" Toggled="OnSwitchToggled" />
+
+            <StackLayout Spacing="-10">
+                <RadioButton x:Name="radio1" Content="Display task on start page" CheckedChanged="OnRadioCheckedChanged" />
+                <RadioButton x:Name="radio2" Content="Don't display task on start page" CheckedChanged="OnRadioCheckedChanged" />
+            </StackLayout>
+
+            <Label x:Name="priorityLabel" Text="Priority: Very low" />
+            <Slider x:Name="prioritySlider" 
+                    Maximum="5" 
+                    MaximumWidthRequest="200"
+                    MinimumWidthRequest="200"
+                    ValueChanged="OnSliderValueChanged" 
+                    HorizontalOptions="Start"/>
+
+            <Label Text="Task status:"/>
+            <Picker x:Name="picker" SelectedIndexChanged="OnPickerSelectedIndexChanged">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Not started yet</x:String>
+                        <x:String>Paused</x:String>
+                        <x:String>In progress</x:String>
+                        <x:String>Finished</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+
+            <Button
+            Text="Save changes"
+            Clicked="OnSaveButtonClicked"
+            HorizontalOptions="Center"
+            MinimumWidthRequest="50"/>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:local="clr-namespace:MauiApp1"
+             x:Class="MauiApp1.NewPage2"
+             Title="NewPage2">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:MultiBindingConverter x:Key="MultiBindingConverter" />
+            <Style x:Key="InvalidEntryStyle" TargetType="Entry">
+                <Setter Property="TextColor" Value="Red" />
+            </Style>
+            <Style x:Key="ValidEntryStyle" TargetType="Entry">
+                <Setter Property="TextColor" Value="Green" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    <!-- Änderungen in bezug auf die Feedbacks die beim eingeben kommen-->
+
+    <ScrollView>
+        <VerticalStackLayout Padding="30,0" Spacing="25" VerticalOptions="Center">
+            <Image Source="logo_nur_symbol.png" SemanticProperties.Description="App symbol" HorizontalOptions="Center" MaximumWidthRequest="60" />
+            <Image Source="logo_nur_text.png" SemanticProperties.Description="App symbol Text" HorizontalOptions="Center" MaximumWidthRequest="150" />
+
+            <HorizontalStackLayout HorizontalOptions="Center">
+                <Entry x:Name="usernameEntry" WidthRequest="300" ToolTipProperties.Text="Enter your name" Placeholder="Username">
+                    <Entry.Behaviors>
+                        <toolkit:TextValidationBehavior 
+                            InvalidStyle="{StaticResource InvalidEntryStyle}"
+                            ValidStyle="{StaticResource ValidEntryStyle}"
+                            Flags="ValidateOnValueChanged"
+                            MinimumLength="1"
+                            MaximumLength="10" />
+                    </Entry.Behaviors>
+                </Entry>
+                <Label Text="&#xf119;" FontFamily="FontAwesome" TextColor="Red" FontSize="30" VerticalTextAlignment="Center">
+                    <Label.IsVisible>
+                        <MultiBinding Converter="{StaticResource MultiBindingConverter}">
+                            <Binding Path="Text" Source="{x:Reference usernameEntry}" />
+                            <Binding Path="Behaviors[0].IsNotValid" Source="{x:Reference usernameEntry}" />
+                        </MultiBinding>
+                    </Label.IsVisible>
+                </Label>
+                <Label Text="&#xf118;" FontFamily="FontAwesome" TextColor="Green" FontSize="30" VerticalTextAlignment="Center">
+                    <Label.IsVisible>
+                        <MultiBinding Converter="{StaticResource MultiBindingConverter}">
+                            <Binding Path="Text" Source="{x:Reference usernameEntry}" />
+                            <Binding Path="Behaviors[0].IsValid" Source="{x:Reference usernameEntry}" />
+                        </MultiBinding>
+                    </Label.IsVisible>
+                </Label>
+            </HorizontalStackLayout>
+
+            <HorizontalStackLayout HorizontalOptions="Center">
+                <Label Text="" />
+                <Label Text="The name must be at least 1 and at most 10 characters long." 
+                       IsVisible="{Binding Source={x:Reference usernameEntry}, Path=Behaviors[0].IsNotValid}" 
+                       FontSize="11"/>
+            </HorizontalStackLayout>
+
+            <HorizontalStackLayout HorizontalOptions="Center">
+                <Entry x:Name="emailEntry" WidthRequest="300" ToolTipProperties.Text="Enter a specific email address." Placeholder="Email">
+                    <Entry.Behaviors>
+                        <toolkit:CharactersValidationBehavior 
+                            CharacterType="Any"
+                            MinimumCharacterTypeCount="1"
+                            InvalidStyle="{StaticResource InvalidEntryStyle}"
+                            ValidStyle="{StaticResource ValidEntryStyle}"
+                            Flags="ValidateOnValueChanged"
+                            RegexPattern="^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$" />
+                    </Entry.Behaviors>
+                </Entry>
+                <Label Text="&#xf119;" FontFamily="FontAwesome" TextColor="Red" FontSize="30" VerticalTextAlignment="Center">
+                    <Label.IsVisible>
+                        <MultiBinding Converter="{StaticResource MultiBindingConverter}">
+                            <Binding Path="Text" Source="{x:Reference emailEntry}" />
+                            <Binding Path="Behaviors[0].IsNotValid" Source="{x:Reference emailEntry}" />
+                        </MultiBinding>
+                    </Label.IsVisible>
+                </Label>
+                <Label Text="&#xf118;" FontFamily="FontAwesome" TextColor="Green" FontSize="30" VerticalTextAlignment="Center">
+                    <Label.IsVisible>
+                        <MultiBinding Converter="{StaticResource MultiBindingConverter}">
+                            <Binding Path="Text" Source="{x:Reference emailEntry}" />
+                            <Binding Path="Behaviors[0].IsValid" Source="{x:Reference emailEntry}" />
+                        </MultiBinding>
+                    </Label.IsVisible>
+                </Label>
+            </HorizontalStackLayout>
+
+            <HorizontalStackLayout HorizontalOptions="Center">
+                <Label Text=" Hint: Enter a specific email address." VerticalTextAlignment="Center" 
+                       IsVisible="{Binding Source={x:Reference emailEntry}, Path=Behaviors[0].IsNotValid}" 
+                       TextColor="Red"
+                       FontSize="11"/>
+            </HorizontalStackLayout>
+
+            <HorizontalStackLayout HorizontalOptions="Center">
+                <Entry x:Name="passwordEntry" WidthRequest="300" ToolTipProperties.Text="Enter your password" IsPassword="False" Placeholder="Password">
+                    <Entry.Behaviors>
+                        <toolkit:MultiValidationBehavior 
+                            InvalidStyle="{StaticResource InvalidEntryStyle}"  
+                            ValidStyle="{StaticResource ValidEntryStyle}"
+                            Flags="ValidateOnValueChanged">
+                            <toolkit:CharactersValidationBehavior 
+                                x:Name="DigitValidation" 
+                                CharacterType="Digit" 
+                                MinimumCharacterTypeCount="1" 
+                                toolkit:MultiValidationBehavior.Error="1 digit" 
+                                RegexPattern="" />
+                            <toolkit:CharactersValidationBehavior 
+                                x:Name="UpperValidation" 
+                                CharacterType="UppercaseLetter" 
+                                MinimumCharacterTypeCount="1" 
+                                toolkit:MultiValidationBehavior.Error="1 upper case" 
+                                RegexPattern="" />
+                            <toolkit:CharactersValidationBehavior 
+                                x:Name="SymbolValidation" 
+                                CharacterType="NonAlphanumericSymbol" 
+                                MinimumCharacterTypeCount="1" 
+                                toolkit:MultiValidationBehavior.Error="1 symbol" 
+                                RegexPattern=""  />
+                            <toolkit:CharactersValidationBehavior 
+                                x:Name="AnyValidation" 
+                                CharacterType="Any" 
+                                MinimumCharacterTypeCount="8" 
+                                toolkit:MultiValidationBehavior.Error="8 characters" 
+                                RegexPattern="" />
+                        </toolkit:MultiValidationBehavior>
+                    </Entry.Behaviors>
+                </Entry>
+                <Label Text="&#xf119;" FontFamily="FontAwesome" TextColor="Red" FontSize="30" VerticalTextAlignment="Center">
+                    <Label.IsVisible>
+                        <MultiBinding Converter="{StaticResource MultiBindingConverter}">
+                            <Binding Path="Text" Source="{x:Reference passwordEntry}" />
+                            <Binding Path="Behaviors[0].IsNotValid" Source="{x:Reference passwordEntry}" />
+                        </MultiBinding>
+                    </Label.IsVisible>
+                </Label>
+                <Label Text="&#xf118;" FontFamily="FontAwesome" TextColor="Green" FontSize="30" VerticalTextAlignment="Center">
+                    <Label.IsVisible>
+                        <MultiBinding Converter="{StaticResource MultiBindingConverter}">
+                            <Binding Path="Text" Source="{x:Reference passwordEntry}" />
+                            <Binding Path="Behaviors[0].IsValid" Source="{x:Reference passwordEntry}" />
+                        </MultiBinding>
+                    </Label.IsVisible>
+                </Label>
+            </HorizontalStackLayout>
+
+            <HorizontalStackLayout HorizontalOptions="Center">
+                <Label Text="" WidthRequest="150" />
+                <Label Text="Password must be at least 8 characters long and contain at least one digit, one uppercase letter, and one special character." 
+                       IsVisible="{Binding Source={x:Reference passwordEntry}, Path=Behaviors[0].IsNotValid}" 
+                       TextColor="Red"
+                       VerticalTextAlignment="Center" 
+                       FontSize="11"/>
+            </HorizontalStackLayout>
+
+            <HorizontalStackLayout HorizontalOptions="Center">
+                <CheckBox x:Name="agreeCheckBox" />
+                <Label Text="I agree to the Terms of Service and Privacy Policy" HeightRequest="18">
+                    <Label.Triggers>
+                        <DataTrigger TargetType="Label" Binding="{Binding Source={x:Reference agreeCheckBox}, Path=IsChecked}" Value="True">
+                            <Setter Property="TextColor" Value="Green" />
+                        </DataTrigger>
+                        <DataTrigger TargetType="Label" Binding="{Binding Source={x:Reference agreeCheckBox}, Path=IsChecked}" Value="False">
+                            <Setter Property="TextColor" Value="Red" />
+                        </DataTrigger>
+                    </Label.Triggers>
+                </Label>
+            </HorizontalStackLayout>
+
+            <Button Text="Sign up" Clicked="OnSignInClicked" HorizontalOptions="Center" MinimumWidthRequest="150" />
+            <Button Text="I have an account" Clicked="OnLoginClicked" HorizontalOptions="Center" MinimumWidthRequest="150" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

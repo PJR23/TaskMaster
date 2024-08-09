@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp1.NewPage1"
+             Title="NewPage1">
+
+    <VerticalStackLayout
+        Padding="20">
+        <Label 
+            Text="Welcome to Task Manager!"
+            FontSize="30"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+        <Label 
+            x:Name="welcomeMessageLabel"
+            Text=""
+            FontSize="20"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+        <Button
+            Text="See all Tasks"
+            SemanticProperties.Hint="Counts the number of times you click"
+            Clicked="Clicked1"
+            HorizontalOptions="Center"
+            MinimumWidthRequest="50"/>
+        <Button Text="!"
+                FontFamily="FontAwesome"
+                FontSize="Large"
+                HorizontalOptions="Start"
+                VerticalOptions="End"
+                Clicked="OnInfoButtonClicked"
+                BackgroundColor="#e67e22"/>
+    </VerticalStackLayout>
+
+</ContentPage>

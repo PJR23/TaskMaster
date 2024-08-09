@@ -1,0 +1,132 @@
+# .NET
+bin/
+obj/
+*.dll
+*.exe
+*.pdb
+*.cache
+*.log
+*.swp
+*.suo
+*.user
+*.userosscache
+*.userprefs
+
+# Rider
+.idea/
+
+# Visual Studio
+.vscode/
+*.suo
+*.user
+*.userosscache
+*.suo
+*.ncb
+*.opendb
+*.tlog
+*.log
+
+# NuGet
+*.nupkg
+*.snupkg
+packages/
+*.nupkg
+*.nuspec
+
+# DotCover
+*.dcvr
+*.dotCover
+
+# Coverage
+*.coverage
+*.coveragexml
+*.ncrunch*
+*.localhistory/
+
+# ASP.NET Scaffolding
+ScaffoldingReadMe.txt
+
+# Logs
+*.log
+
+# Environment Files
+.env
+
+# Build Results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+
+# VS Code
+.vscode/
+
+# .NET Core
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# Auto-generated files by IDEs or build tools
+*.generated.cs
+*.designer.cs
+*.generated.vb
+*.designer.vb
+
+# User-specific files
+*.suo
+*.user
+*.userosscache
+*.suo
+*.ncb
+*.aps
+*.csproj.user
+*.dotCover
+*.sln.docstates
+
+# Binaries and build output
+*.bin
+*.dll
+*.exe
+
+# Package files
+*.nupkg
+*.snupkg
+
+# Local environment settings
+.local/
+
+# MAUI specific
+MauiAppName/.vs/
+MauiAppName/.ncb
+MauiAppName/*.user
+MauiAppName/*.suo
+MauiAppName/*.suo
+MauiAppName/*.tlog
+
+# User-specific files
+*.user
+
+# Generated files
+*.generated.cs
+*.generated.vb
+*.g.cs
+*.g.vb
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*.swp
+*.swo
+
+# Log files
+*.log
+
+# Mac files
+.DS_Store
+
+# Windows files
+Thumbs.db
+Desktop.ini
